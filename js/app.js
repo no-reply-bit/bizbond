@@ -540,19 +540,4 @@ window.addEventListener("load", () => {
   });
 });
 
-document.getElementById("contact-form").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const form = e.target;
 
-  const res = await fetch(form.action, {
-    method: "POST",
-    body: new FormData(form)
-  });
-
-  if (res.ok) {
-    alert("送信が完了しました。ありがとうございます！");
-    form.reset();
-  } else {
-    alert("送信に失敗しました。時間を置いて再度お試しください。");
-  }
-});
