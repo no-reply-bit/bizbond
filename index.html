@@ -7,9 +7,9 @@
   <meta name="description" content="人×自動化のハイブリッドで、LinkedInを活用したBtoB新規開拓とアポイント創出、データ資産化まで一気通貫で支援します。">
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/features.css">
+  <link rel="stylesheet" href="./css/responsive.css" />
 </head>
 
-  
 <body>
 
 <header role="banner">
@@ -18,6 +18,17 @@
       <img src="./images/bizlogo.png" alt="BIZBONDロゴ" class="brand-logo">
       <span class="brand-name">BIZBOND</span>
     </a>
+
+    <!-- ここから追加：ハンバーガートグル -->
+    <input
+      type="checkbox"
+      id="nav-toggle"
+      class="nav-toggle-input"
+      aria-hidden="true">
+    <label for="nav-toggle" class="nav-toggle" aria-label="メニューを開閉">
+      <span></span>
+    </label>
+    <!-- ここまで追加 -->
 
     <nav aria-label="グローバルナビ">
       <ul class="nav-list">
@@ -41,8 +52,18 @@
         つながりを大切にする<br>
         新しい営業の形
       </h1>
-      <p>人物のネットワークとデータの力を融合し、決裁者との出会いを科学する。<br>
-      企業ではなく「人」から始まる、次世代型のアプローチ支援です。</p>
+        <!-- PC用テキスト -->
+        <p class="hero-text pc-only">
+          人物のネットワークとデータの力を融合し、決裁者との出会いを科学する。<br>
+          企業ではなく「人」から始まる、次世代型のアプローチ支援です。
+        </p>
+
+        <!-- スマホ用テキスト（短く2行） -->
+        <p class="hero-text sp-only">
+          企業ではなく「人」から始まる<br>
+          次世代型のアプローチ支援です。
+        </p>
+
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">無料相談する</a>
         <a href="#services" class="btn-outline">サービスを見る</a>
@@ -119,10 +140,18 @@
   <section id="team" class="section" aria-labelledby="team-title">
     <div class="container">
       <h2 id="team-title" class="fade-up">チーム</h2>
-      <p class="fade-up">
-        戦略・ターゲティング・運用・自動化の専門家が一体となり、最適な営業プロセスを構築<br>
+
+      <!-- PC用：従来の長い説明 -->
+      <p class="pc-only">
+        戦略・ターゲティング・運用・自動化の専門家が一体となり、最適な営業プロセスを構築。<br>
         透明性の高い運用と知見共有を通じて、貴社の営業組織の底上げを実現します。
       </p>
+
+      <!-- スマホ用：短い2行だけ -->
+      <p class="sp-only">
+        戦略×営業を強化支援
+      </p>
+
       <div class="team-grid" data-stagger>
         <!-- CEO -->
         <div class="member fade-up">
@@ -172,90 +201,129 @@
   <!-- About -->
   <section id="about" class="section" aria-labelledby="about-title">
     <div class="container">
-      <h2 id="about-title" class="section-title-with-line fade-up">
-        <span>皆さまの課題と、BIZBONDが解決できること</span>
+      <h2 id="about-title" class="section-title-with-line">
+        <span class="pc-only">皆さまの課題と、BIZBOND が解決すること</span>
+        <span class="sp-only">課題×解決</span>
       </h2>
 
-      <!-- ① -->
-      <article class="feature-pair fade-up">
-        <div class="feature-problem">
-          <h3>課題① 任せきり営業代行で成果が出ない</h3>
-          <p>
-            営業代行に任せきりで、リストやDM文面が固定化。<br>
-            現場の状況が反映されず、成果が出ていない。
-          </p>
-        </div>
+<!-- ① -->
+<article class="feature-pair fade-up">
+  <div class="feature-problem">
+    <h3>
+      <span class="pc-only">課題① 任せきり営業代行で成果が出ない</span>
+      <span class="sp-only">課題① 成果が出ない</span>
+    </h3>
 
-        <div class="feature-illust">
-          <img src="./images/kadai1.png"
-               alt="小規模で柔軟なサポートのイメージ" loading="lazy">
-        </div>
+    <!-- PC用 -->
+    <p class="pc-only">
+      営業代行に任せきりで、リストやDM文面が固定化。<br>
+      現場の状況が反映されず、成果が出ていない。
+    </p>
 
-        <div class="feature-solution">
-          <h3>解決① 週次最適化で成果向上</h3>
-          <p>
-            小規模チームの柔軟性でリスト・文面を週単位で更新。<br>
-            1:1で最適化し、常に成果につながる改善を継続。
-          </p>
-        </div>
-      </article>
+    <!-- SP用（1行） -->
+    <p class="sp-only">
+      営業代行任せで成果が出ない。
+    </p>
+  </div>
 
-      <!-- ② -->
-      <article class="feature-pair fade-up">
-        <div class="feature-problem">
-          <h3>課題② アポの質が低く商談化しない</h3>
-          <p>
-            アポは取れても質が低く決裁者につながらない。<br>
-            商談化率が低く、工数ばかり増えてしまう。
-          </p>
-        </div>
+  <div class="feature-illust">
+    <img src="./images/kadai1.png" alt="小規模で柔軟なサポートのイメージ" loading="lazy">
+  </div>
 
-        <div class="feature-illust">
-          <img src="./images/kadai2.png"
-               alt="人物起点で質の高いアポを獲得するイメージ" loading="lazy">
-        </div>
+  <div class="feature-solution">
+    <h3>解決① 週次最適化で成果向上</h3>
 
-        <div class="feature-solution">
-          <h3>解決② 人物起点で質改善</h3>
-          <p>
-            会社ではなく“人物”起点で承認・返信率が向上。<br>
-            決裁者に届きやすく、質の高い商談機会が生まれる。
-          </p>
-        </div>
-      </article>
+    <!-- 解決の文章は PC/SP 共通、ただし SP は改行なし -->
+    <p class="pc-only">
+      小規模チームの柔軟性でリスト・文面を週単位で更新。<br>
+      1:1で最適化し、常に成果につながる改善を継続。
+    </p>
+    <p class="sp-only">
+      小規模チームの柔軟性でリストと文面を週次更新、1:1で成果につながる改善を継続します。
+    </p>
+  </div>
+</article>
 
-      <!-- ③ -->
-      <article class="feature-pair fade-up">
-        <div class="feature-problem">
-          <h3>課題③ 営業ノウハウが社内に蓄積されない</h3>
-          <p>
-            何が効いたか見えず、再現性がなく外注依存になる。<br>
-            ナレッジが残らず、社内の強化につながらない。
-          </p>
-        </div>
+<!-- ② -->
+<article class="feature-pair fade-up">
+  <div class="feature-problem">
+    <h3>
+      <span class="pc-only">課題② アポの質が低く商談化しない</span>
+      <span class="sp-only">課題② 質が低い</span>
+    </h3>
 
-        <div class="feature-illust">
-          <img src="./images/kadai3.png"
-               alt="データで営業知見を資産化するイメージ" loading="lazy">
-        </div>
+    <p class="pc-only">
+      アポは取れても質が低く決裁者につながらない。<br>
+      商談化率が低く、工数ばかり増えてしまう。
+    </p>
+    <p class="sp-only">
+      決裁者につながらず商談化しない。
+    </p>
+  </div>
 
-        <div class="feature-solution">
-          <h3>解決③ 営業知見の資産化</h3>
-          <p>
-            承認率・返信率・否応理由を可視化して学習可能に。<br>
-            営業資産として社内に残り、再現性が高まる。
-          </p>
-        </div>
-      </article>
+  <div class="feature-illust">
+    <img src="./images/kadai2.png" alt="人物起点で質の高いアポを獲得するイメージ" loading="lazy">
+  </div>
+
+  <div class="feature-solution">
+    <h3>解決② 人物起点で質改善</h3>
+
+    <p class="pc-only">
+      会社ではなく“人物”起点で承認・返信率が向上。<br>
+      決裁者に届きやすく、質の高い商談機会が生まれる。
+    </p>
+    <p class="sp-only">
+      人物起点で承認や返信率が向上、決裁者に届きやすく質の高い商談が生まれます。
+    </p>
+  </div>
+</article>
+
+<!-- ③ -->
+<article class="feature-pair fade-up">
+  <div class="feature-problem">
+    <h3>
+      <span class="pc-only">課題③ 営業ノウハウが社内に蓄積されない</span>
+      <span class="sp-only">課題③ 蓄積しない</span>
+    </h3>
+
+    <p class="pc-only">
+      何が効いたか見えず、再現性がなく外注依存になる。<br>
+      ナレッジが残らず、社内の強化につながらない。
+    </p>
+    <p class="sp-only">
+      知見・営業ノウハウが残らない。
+    </p>
+  </div>
+
+  <div class="feature-illust">
+    <img src="./images/kadai3.png" alt="データで営業知見を資産化するイメージ" loading="lazy">
+  </div>
+
+  <div class="feature-solution">
+    <h3>解決③ 営業知見の資産化</h3>
+
+    <p class="pc-only">
+      承認率・返信率・否応理由を可視化して学習可能に。<br>
+      営業資産として社内に残り、再現性が高まる。
+    </p>
+    <p class="sp-only">
+      承認率や返信率を可視化し営業知見を資産化、再現性の高い営業が可能になります。
+    </p>
+  </div>
+</article>
+
+
+
     </div>
   </section>
 
   <!-- Process -->
   <section id="process" class="section" aria-labelledby="process-title">
     <div class="container">
-      <h2 id="process-title" class="section-title-with-line fade-up">
-        <span>BIZBOND が提供するご支援プロセス</span>
-      </h2>
+    <h2 id="process-title" class="section-title-with-line">
+      <span class="pc-only">BIZBOND が提供するご支援プロセス</span>
+      <span class="sp-only">ご支援プロセス</span>
+    </h2>
 
       <!-- 1行目：設計（単独） -->
       <ol class="process-list" data-stagger>
@@ -341,6 +409,7 @@
       </p>
     </div>
   </section>
+
 
   <!-- Results -->
   <section id="results" class="section" aria-labelledby="results-title">
@@ -633,7 +702,9 @@
           <div>
             <dt>Mail</dt>
             <dd>
-              <a href="no-reply@sales.bizbond.co.jp">info@BIZBOND.co.jp</a>
+              <a href="mailto:no-reply@sales.bizbond.co.jp">
+                info@bizbond.co.jp
+              </a>
             </dd>
           </div>
         </dl>
@@ -658,37 +729,41 @@
       <h2 id="contact-title" class="fade-up">お問い合わせ</h2>
       <p class="fade-up">以下のフォームからお気軽にご相談ください。担当よりご連絡いたします。</p>
 
-      <form name="contact" method="post" class="fade-up">
-        <fieldset>
-          <legend>ご相談内容</legend>
+<form 
+  id="contact-form"
+  action="https://formspree.io/f/xgvgydyg" 
+  method="POST"
+  class="fade-up"
+>
+  <label>
+    お名前
+    <input type="text" name="name" required>
+  </label>
 
-          <!-- ★ プルダウン追加部分 -->
-          <label>ご相談種別
-            <select name="category" required>
-              <option value="">選択してください</option>
-              <option>資料請求</option>
-              <option>契約検討・商談希望</option>
-              <option>サービス内容の質問</option>
-              <option>見積り依頼</option>
-              <option>その他のお問い合わせ</option>
-            </select>
-          </label>
+  <label>
+    メールアドレス
+    <input type="email" name="email" required>
+  </label>
 
-          <label>詳細
-            <textarea name="message" rows="6" placeholder=""></textarea>
-          </label>
-        </fieldset>
+  <label>
+    ご相談種別
+    <select name="category" required>
+      <option value="">選択してください</option>
+      <option value="資料請求">資料請求</option>
+      <option value="商談・契約相談">商談・契約相談</option>
+      <option value="お問い合わせ">お問い合わせ</option>
+      <option value="サポート依頼">サポート依頼</option>
+    </select>
+  </label>
 
-        <fieldset>
-          <legend>連絡先情報</legend>
-          <label>会社名<input name="company" required></label>
-          <label>お名前<input name="name" required></label>
-          <label>メール<input type="email" name="email" required></label>
-          <label>電話番号（任意）<input type="tel" name="tel"></label>
-        </fieldset>
+  <label>
+    ご相談内容
+    <textarea name="message" rows="6" required></textarea>
+  </label>
 
-        <button type="submit">送信する</button>
-      </form>
+  <button type="submit" class="btn-submit">送信する</button>
+</form>
+
     </div>
   </section>
 </main>
@@ -713,4 +788,3 @@
 <script src="./js/app.js" defer></script>
 </body>
 </html>
-

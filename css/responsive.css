@@ -1,0 +1,627 @@
+/* ============================================
+   BIZBOND - responsive.css
+   画面幅に応じたレイアウト最適化 + ハンバーガーメニュー
+   ============================================ */
+
+/* --------------------------------------------
+   共通：モバイル時の余白・タイポ微調整
+   -------------------------------------------- */
+/* ==== 共通：スマホで横スクロールさせない対策 ==== */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;     /* これで横スクロールを禁止 */
+}
+
+/* 画像・動画が画面幅をはみ出さないようにする */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media screen and (max-width: 960px) {
+  .hero,
+  .hero-inner,
+  .hero-bg-overlay {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 960px) {
+  body {
+    font-size: 15px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 16px;
+  }
+
+  main > section.section {
+    padding: 40px 0;
+  }
+
+  h1, .hero-title {
+    font-size: clamp(26px, 6vw, 32px);
+  }
+
+  h2 {
+    font-size: clamp(22px, 5vw, 28px);
+  }
+}
+
+/* ============================================
+   ヘッダー & ハンバーガーメニュー
+   ============================================ */
+
+/* チェックボックス本体は非表示 */
+.nav-toggle-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ハンバーガーアイコン（ラベル） */
+.nav-toggle {
+  display: none; /* PCでは消しておく */
+  cursor: pointer;
+  margin-left: auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-s);
+}
+
+/* 3本線 */
+.nav-toggle span,
+.nav-toggle span::before,
+.nav-toggle span::after {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 999px;
+  background: #101828;
+  position: relative;
+  transition: transform 0.25s ease, opacity 0.25s ease, top 0.25s ease, bottom 0.25s ease;
+}
+
+.nav-toggle span::before,
+.nav-toggle span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle span::before {
+  top: -6px;
+}
+.nav-toggle span::after {
+  bottom: -6px;
+}
+
+/* モバイルブレイクポイント以下でナビをドロワー化 */
+@media screen and (max-width: 960px) {
+  header[role="banner"] .header-inner {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 16px;
+  }
+
+  header[role="banner"] {
+    backdrop-filter: blur(6px);
+  }
+
+  /* ブランドロゴは左、ハンバーガーは右 */
+  .brand {
+    flex-shrink: 0;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  /* nav を header 内で下方向に展開するドロワーに */
+  header[role="banner"] nav {
+    position: absolute;
+    inset: calc(100% + 8px) 16px auto 16px;
+    z-index: 40;
+  }
+
+  .nav-list {
+    display: none; /* デフォルト非表示 */
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 12px;
+    margin: 0;
+    list-style: none;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: var(--shadow);
+  }
+
+  .nav-list li a {
+    display: block;
+    padding: 10px 12px;
+    font-size: 15px;
+  }
+
+  .nav-contact {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* チェックされたらメニュー展開 */
+  .nav-toggle-input:checked + .nav-toggle + nav .nav-list {
+    display: flex;
+  }
+
+  /* チェックされたら「×」アイコンに変形 */
+  .nav-toggle-input:checked + .nav-toggle span {
+    transform: rotate(45deg);
+  }
+  .nav-toggle-input:checked + .nav-toggle span::before {
+    top: 0;
+    transform: rotate(90deg);
+  }
+  .nav-toggle-input:checked + .nav-toggle span::after {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   Hero セクション
+   ============================================ */
+@media screen and (max-width: 960px) {
+  main > section.hero[aria-label="ファーストビュー"] {
+    min-height: auto;
+    padding: 80px 16px 48px;
+    flex-direction: column;
+  }
+
+  main > section.hero[aria-label="ファーストビュー"] .hero-bg-overlay {
+    inset: 0;
+  }
+
+  main > section.hero[aria-label="ファーストビュー"] .hero-content {
+    padding-inline: 0;
+    margin-bottom: 24px;
+  }
+
+  main > section.hero[aria-label="ファーストビュー"] .hero-lead {
+    font-size: 15px;
+  }
+
+  main > section.hero[aria-label="ファーストビュー"] .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  main > section.hero[aria-label="ファーストビュー"] .btn-primary,
+  main > section.hero[aria-label="ファーストビュー"] .btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+
+  main > section.hero[aria-label="ファーストビュー"] .hero-visual {
+    margin-top: 8px;
+  }
+}
+
+/* ==== Hero の左右余白を広げる ==== */
+@media screen and (max-width: 768px) {
+  .hero .hero-content {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  /* ボタンの横幅も余白に合わせて均一に */
+  .hero .hero-actions {
+    width: 100%;
+  }
+
+  .hero .btn-primary,
+  .hero .btn-outline {
+    width: 100%;
+    max-width: 320px;
+    margin-inline: auto;
+  }
+}
+/* PCでは改行を消す（1行にする） */
+.sp-br {
+  display: none;
+}
+
+/* スマホだけ改行を生かす（2行にする） */
+@media screen and (max-width: 768px) {
+  .sp-br {
+    display: inline;
+  }
+}
+
+/* PCではスマホ用を非表示、PC用だけ表示 */
+.pc-only { display: block; }
+.sp-only { display: none; }
+
+/* スマホではPC用を隠して、スマホ用だけ表示 */
+@media screen and (max-width: 768px) {
+  .pc-only { display: none; }
+  .sp-only { display: block; }
+}
+
+
+/* ============================================
+   Services セクション
+   ============================================ */
+@media screen and (max-width: 960px) {
+  #services .services {
+    padding-inline: 0;
+  }
+
+  #services .service-block {
+    flex-direction: column !important;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  #services .service-text,
+  #services .service-img {
+    min-width: 0;
+  }
+
+  #services .service-img {
+    justify-content: center;
+  }
+
+  #services .service-img img {
+    max-width: 100%;
+    border-radius: 16px;
+  }
+
+  #services .service-text::before {
+    font-size: 56px;
+    top: -12px;
+    left: -4px;
+  }
+}
+
+/* ==== Serviceセクションの左右余白を広くする ==== */
+@media screen and (max-width: 768px) {
+  #services .service-block {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  /* テキストの行間も少し広げると綺麗 */
+  #services .service-text {
+    line-height: 1.75;
+  }
+
+  /* 画像も中央寄せ & 幅を制御 */
+  #services .service-img img {
+    width: 100%;
+    max-width: 320px;
+    margin-inline: auto;
+    display: block;
+  }
+}
+
+/* ==== Services：スマホでは横幅を強制縮小し、余白を入れる ==== */
+@media screen and (max-width: 768px) {
+
+  /* 1) 親コンテナに左右余白を付ける（最も確実） */
+  #services .services {
+    width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+    box-sizing: border-box;
+  }
+
+  /* 2) service-block が1080px固定しないようにする */
+  #services .service-block {
+    max-width: 100% !important;   /* ← これが重要 */
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* 3) 画像とテキストの左右余白を整える */
+  #services .service-text,
+  #services .service-img {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* 4) テキスト幅の調整（読みやすく） */
+  #services .service-desc {
+    line-height: 1.8;
+  }
+
+  /* 5) 画像の中央寄せ & サイズ抑制 */
+  #services .service-img img {
+    max-width: 320px;
+    margin-inline: auto;
+  }
+}
+
+/* ============================================
+   About / 特徴
+   （features.css の挙動を補完）
+   ============================================ */
+@media screen and (max-width: 768px) {
+  #about .container {
+    padding-inline: 16px;
+  }
+
+  .feature-pair {
+    margin-inline: 0;
+  }
+}
+/* ==== About（課題×解決）スマホ最適化 ==== */
+@media screen and (max-width: 768px) {
+
+  /* タイトルが切れないように調整 */
+  #about .container {
+    padding-inline: 16px;
+  }
+
+  #about h2 {
+    font-size: 22px;
+    line-height: 1.4;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  /* カード全体をスッキリさせる */
+  .feature-pair {
+    flex-direction: column;        /* 縦積み */
+    gap: 10px;
+    padding: 16px 14px;
+    margin-inline: auto;
+    border-radius: 18px;
+  }
+
+  /* アイコンはスマホでは非表示にして情報を減らす */
+  .feature-illust {
+    display: none;
+  }
+
+  /* 見出し・本文を少しコンパクトに */
+  .feature-problem h3,
+  .feature-solution h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .feature-problem p,
+  .feature-solution p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+}
+
+
+
+
+
+
+
+
+/* ============================================
+   チーム / 実績 / FAQ / 料金 / お問い合わせ
+   ============================================ */
+
+/* チーム：1カラムに */
+@media screen and (max-width: 960px) {
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .team-card {
+    padding: 16px;
+  }
+
+  #results .case-slider-track {
+    gap: 12px;
+  }
+
+  #results .case-card {
+    min-width: 82%;
+    margin-inline: auto;
+  }
+}
+
+/* ==== Team：スマホは横スクロールカードにする ==== */
+@media screen and (max-width: 768px) {
+
+  /* 横一列に並べてスワイプで切り替え */
+  #team .team-grid {
+    display: flex;              /* 縦→横並び */
+    flex-wrap: nowrap;          /* 折り返さない */
+    overflow-x: auto;           /* 横スクロール */
+    gap: 16px;
+    padding: 0 16px 8px;
+    scroll-snap-type: x mandatory; /* スナップ */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 各カードは画面の8〜9割くらいの幅で固定 */
+  #team .member {
+    flex: 0 0 85%;              /* ここでカード幅を指定 */
+    max-width: 85%;
+    margin: 0 auto 8px;
+    scroll-snap-align: center;  /* 中央で止まりやすく */
+  }
+}
+
+/* 料金テーブル：横スクロール許可 */
+/* 料金テーブル：スマホでは画面幅にフィットさせる */
+@media screen and (max-width: 960px) {
+  #pricing .pricing-table-wrapper {
+    overflow-x: visible;     /* 横スクロールやめる */
+    -webkit-overflow-scrolling: auto;
+  }
+
+  #pricing table {
+    width: 100%;
+    min-width: 0;            /* 640px縛りを解除 */
+    table-layout: fixed;     /* 各列を自動で詰める */
+  }
+
+  #pricing th,
+  #pricing td {
+    padding: 10px 8px;
+    font-size: 14px;
+    word-break: break-word;  /* 長い日本語も折り返し */
+  }
+
+  /* 金額だけ少し強調はそのまま */
+  #pricing tbody tr td:nth-child(2) {
+    font-size: 16px;
+    font-weight: 800;
+  }
+}
+/* ==== Pricing：スマホは表をカード型に変形 ==== */
+/* ==== Pricing：スマホは表をカード型に変形 ==== */
+@media screen and (max-width: 768px) {
+
+  /* ← ここで“土台の大きなカード”を無効化する */
+  #pricing table {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  /* テーブル全体の横長を解除 */
+  #pricing table,
+  #pricing thead,
+  #pricing tbody,
+  #pricing tr,
+  #pricing th,
+  #pricing td {
+    display: block;
+    width: 100%;
+  }
+
+  /* ヘッダーを非表示（縦カードなので不要） */
+  #pricing thead {
+    display: none;
+  }
+
+  /* 行をカード化 */
+  #pricing tr {
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 16px 14px;
+    border-radius: 16px;
+    box-shadow: 0 3px 10px rgba(15,23,42,0.08);
+  }
+
+  /* プラン名 */
+  #pricing td:first-child {
+    font-size: 18px;
+    font-weight: 800;
+    color: #0b74b7;
+    margin-bottom: 6px;
+  }
+
+  /* 金額（縦に揃える） */
+  #pricing td:nth-child(2) {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1fa3e6;
+    margin-bottom: 8px;
+  }
+
+  /* 内容説明 */
+  #pricing td:nth-child(3) {
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.7;
+  }
+}
+
+
+/* スマホでは料金プランの <br> を消す（1行にする） */
+@media screen and (max-width: 768px) {
+  #pricing td br {
+    display: none;
+  }
+}
+
+/* スマホでは PC用の料金テーブルを完全に非表示にする */
+@media screen and (max-width: 768px) {
+  #pricing .pricing-table-wrapper {
+    display: none !important;
+  }
+}
+
+
+/* ==== 事例カード：スマホは改行なし ==== */
+@media screen and (max-width: 768px) {
+  .case-body br {
+    display: none;
+  }
+}
+
+
+
+/* FAQ：余白とタップ領域 */
+@media screen and (max-width: 768px) {
+  #faq .container {
+    padding-inline: 16px;
+  }
+
+  #faq details {
+    padding: 12px 14px;
+  }
+
+  #faq summary {
+    font-size: 15px;
+  }
+}
+
+/* お問い合わせフォーム：幅いっぱいに */
+@media screen and (max-width: 960px) {
+  #contact .container {
+    padding-inline: 16px;
+  }
+
+  #contact form {
+    max-width: 100%;
+  }
+
+  #contact .form-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* フッター：縦積み & 中央寄せ */
+@media screen and (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .footer-inner nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
