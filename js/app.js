@@ -297,6 +297,33 @@ console.log("✅ app.js is loaded successfully.");
     });
   }
 
+  function setupFloatingBook() {
+    const widget = document.querySelector('.book-float');
+    if (!widget) return;
+
+    const closeBtn = widget.querySelector('.book-float__close');
+    const KEY = 'bizbond_book_widget_hidden_v1';
+
+    // 以前閉じていたら表示しない
+    try {
+      if (localStorage.getItem(KEY) === '1') {
+        widget.classList.add('is-hidden');
+      }
+    } catch (e) {}
+
+    // 閉じる（リンク遷移しない）
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        widget.classList.add('is-hidden');
+        try { localStorage.setItem(KEY, '1'); } catch (e2) {}
+      });
+    }
+  }
+  
+
+
   /* -----------------------------
    * Init
    * ----------------------------- */
@@ -306,6 +333,7 @@ console.log("✅ app.js is loaded successfully.");
     setupForm();
     setupFAQ();
     setupCaseSlider();   // ← これを追加
+    setupFloatingBook(); // ←これ追加
   }
 
   if (document.readyState === 'loading') {

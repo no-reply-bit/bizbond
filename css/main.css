@@ -45,10 +45,14 @@ li{margin:.25em 0}
 
 /* ===== Header / Global Nav ===== */
 header[role="banner"]{
-  position:sticky;top:0;z-index:50;
-  background:rgba(255,255,255,.85);
-  backdrop-filter:saturate(160%) blur(8px);
-  border-bottom:1px solid var(--line);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000; /* book-floatより下でもOKだが念のため */
+  background: rgba(255,255,255,.85);
+  backdrop-filter: saturate(160%) blur(8px);
+  border-bottom: 1px solid var(--line);
 }
 .header-inner{
   display:flex;justify-content:space-between;align-items:center;
@@ -953,4 +957,101 @@ h1,h2,h3, p, a, li{
 /* ステップ表示（data-stagger 用） */
 [data-stagger] > * {
   transition-delay: calc(0.08s * var(--i, 0));
+}
+
+/* ============================================
+   Floating Book Widget（右下 常駐）
+   ============================================ */
+.book-float{
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 999;
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  width: min(480px, calc(100vw - 32px));
+  padding: 12px 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.96);
+  border: 1px solid rgba(31,163,230,0.25);
+  box-shadow: 0 14px 34px rgba(15,23,42,0.18);
+  text-decoration: none;
+  color: var(--ink);
+  backdrop-filter: blur(8px);
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+
+.book-float:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 18px 44px rgba(15,23,42,0.22);
+  text-decoration: none;
+}
+
+.book-float__img{
+  width: 64px;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(15,23,42,0.12);
+}
+
+.book-float__body{
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.book-float__kicker{
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  color: #0b74b7;
+}
+
+.book-float__title{
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.book-float__sub{
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--ink-2);
+}
+
+.book-float__cta{
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--brand);
+}
+
+.book-float__close{
+  appearance: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  color: #667085;
+  font-size: 18px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+}
+
+.book-float__close:hover{
+  background: rgba(16,24,40,0.06);
+}
+
+/* 閉じた状態（JSで付与） */
+.book-float.is-hidden{
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
 }

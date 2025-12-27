@@ -625,3 +625,22 @@ video {
     justify-content: center;
   }
 }
+
+/* Floating Book Widget：スマホ最適化 */
+@media screen and (max-width: 768px) {
+  .book-float{
+    right: 12px;
+    bottom: 12px;
+    grid-template-columns: 44px 1fr auto;
+    gap: 10px;
+    padding: 10px 10px;
+    width: min(360px, calc(100vw - 24px));
+  }
+  .book-float__img{
+    width: 44px;
+    height: 62px;
+  }
+  .book-float__sub{
+    display: none; /* スマホでは説明を省略 */
+  }
+}
